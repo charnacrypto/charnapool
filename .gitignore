@@ -1,4 +1,5 @@
 node_modules/
 .idea/
-config.json
+./config.json
+./website/config.js
 logs/
