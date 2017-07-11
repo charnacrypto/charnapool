@@ -145,6 +145,13 @@ npm update
 
 #### 2) Configuration
 
+**Note**: *You need to create a `config.json` file in the pool's root directory using `config.sample.json`,
+and a `config.js` file in the website directory using `website/config.sample.js`*.
+
+```bash
+cp config.sample.json config.json
+cp website/config.sample.js website/config.js
+```
 
 Explanation for each field:
 ```javascript
