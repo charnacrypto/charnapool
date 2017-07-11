@@ -213,7 +213,10 @@
     <h3>Estimate Mining Profits</h3>
     <div id="calcHashHolder">
         <div class="input-group">
-            <input type="number" class="form-control" id="calcHashRate" placeholder="Enter Your Hash Rate">
+            <div class="input-field">
+                <input type="number" class="form-control" id="calcHashRate">
+                <label for="calcHashRate">Enter Your Hash Rate</label>
+            </div>
             <div class="input-group-btn">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="calcHashDropdown">
                     <span id="calcHashUnit" data-mul="1">KH/s</span> <span class="caret"></span>
@@ -224,8 +227,12 @@
                     <li><a href="#" data-mul="2">MH/s</a></li>
                 </ul>
             </div>
-            <span class="input-group-addon">=</span>
-            <span class="input-group-addon" id="calcHashResultsHolder"><span id="calcHashAmount"></span> <span id="calcHashSymbol"></span>/day</span>
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-default" disabled>
+                    <span>=</span> 
+                    <span id="calcHashResultsHolder"><span id="calcHashAmount"></span> <span id="calcHashSymbol"></span>/day</span>
+                </button>
+            </div>
         </div>
     </div>
 </div>
@@ -236,11 +243,16 @@
     <h3>Your Stats & Payment History</h3>
 
     <div class="input-group">
-        <input class="form-control" id="yourStatsInput" type="text" placeholder="Enter Your Address">
-        <span class="input-group-btn"><button class="btn btn-default" type="button" id="lookUp">
-            <span><i class="fa fa-search"></i> Lookup</span>
-            <span><i class="fa fa-refresh fa-spin"></i> Searching...</span>
-        </button></span>
+        <div class="input-field">
+            <input class="form-control" id="yourStatsInput" type="text">
+            <label for="yourStatsInput">Enter Your Address</label>
+        </div>
+        <div class="input-group-btn">
+            <button class="btn btn-default" type="button" id="lookUp">
+                <span><i class="fa fa-search"></i> Lookup</span>
+                <span><i class="fa fa-refresh fa-spin"></i> Searching...</span>
+            </button>
+        </div>
     </div>
 
     <div class="row">
