@@ -1,13 +1,12 @@
-cryptonote-forknote-pool
-====================
+cryptonote-charna-pool
+======================
 
-High performance Node.js (with native C addons) mining pool for Cryptonote based coins, created with the Forknote software such as Bytecoin, Dashcoin, etc..
+High performance Node.js (with native C addons) mining pool for Cryptonote based coins, optimized for Charnacoin, with the support of Forknote software such as Bytecoin, Dashcoin, etc..
 
 Comes with lightweight example front-end script which uses the pool's AJAX API.
 
 
-
-#### Table of Contents
+### Table of Contents
 * [Features](#features)
 * [Community Support](#community--support)
 * [Pools Using This Software](#pools-using-this-software)
@@ -28,7 +27,7 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
 * [License](#license)
 
 
-#### Basic features
+### Basic features
 
 * TCP (stratum-like) protocol for server-push based jobs
   * Compared to old HTTP protocol, this has a higher hash rate, lower network/CPU server load, lower orphan
@@ -54,7 +53,7 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
   * Blocks found (pending, confirmed, and orphaned)
 * An easily extendable, responsive, light-weight front-end using API to display data
 
-#### Extra features
+### Extra features
 
 * Admin panel
   * Aggregated pool statistics
@@ -77,40 +76,61 @@ Comes with lightweight example front-end script which uses the pool's AJAX API.
 * [CryptoNote Forum](https://forum.cryptonote.org/)
 * [CryptoNote Universal Pool Forum](https://bitcointalk.org/index.php?topic=705509)
 * [Forknote](https://forknote.net)
+* [Charnacoin](https://charnacoin.com)
 
-#### Pools Using This Software
+### Pools Using This Software
 
 * http://democats.org
 * http://cryptonotepool.com/
 
 Usage
-===
+=====
 
-#### Requirements
+### Requirements
 * Coin daemon(s) (find the coin's repo and build latest version from source)
-* simplewallet (Bytecoin/Forknote v1.1.11).  Do NOT use Forknote 2.0.0, since it's in alpha
-```
+* Coin RPC wallet(s) for Charnacoin or Monero based cryptocurrency
+* simplewallet for Forknote based cryptocurrency (Bytecoin/Forknote v1.1.11).  Do NOT use Forknote 2.0.0, since it's in alpha
 * [Node.js](http://nodejs.org/) v0.10+ ([follow these installation instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager))
 * [Redis](http://redis.io/) key-value store v2.6+ ([follow these instructions](http://redis.io/topics/quickstart))
-* libssl required for the node-multi-hashing module
-  * For Ubuntu: `sudo apt-get install libssl-dev`
+* libssl required for the node-multi-hashing module. For Ubuntu: `sudo apt-get install libssl-dev`
 
 
-##### Seriously
+#### Seriously
 Those are legitimate requirements. If you use old versions of Node.js or Redis that may come with your system package manager then you will have problems. Follow the linked instructions to get the last stable versions.
+**Note**: *Version 0.10.^ of Node.js is most suitable with the actual development stage of the project*.
 
 
 [**Redis security warning**](http://redis.io/topics/security): be sure firewall access to redis - an easy way is to
 include `bind 127.0.0.1` in your `redis.conf` file. Also it's a good idea to learn about and understand software that
 you are using - a good place to start with redis is [data persistence](http://redis.io/topics/persistence).
 
-##### Easy install on Ubuntu 14 LTS
-Installing pool on different Linux distributives is different because it depends on system default components and versions. For now the easiest way to install pool is to use Ubuntu 14 LTS. Thus, all you had to do in order to prepare Ubunty 14 for pool installation is to run:
+#### Installation
+Installing pool on different Linux distributives is different because it depends on system default components and versions.
+
+##### On Ubuntu 14 LTS
+For now the easiest way to install pool is to use Ubuntu 14 LTS. Thus, all you had to do in order to prepare Ubuntu 14 for pool installation is to run:
 
 ```bash
 sudo apt-get install git build-essential redis-server libboost1.55-all-dev nodejs-dev nodejs-legacy npm cmake libssl-dev
 ```
 
+##### On Ubuntu 16 LTS
+
+```bash
+sudo apt-get install git build-essential redis-server libboost-all-dev nodejs-dev nodejs-legacy npm cmake libssl-dev
+```
+
+Version 0.10.^ of Node.js is most suitable with the actual development stage.
+That said, since Ubuntu 16 come with version 4.^ of Node.js you will need to downgrade it (just to run the pool).
+
+```bash
+# install n to manage node version to use
+sudo npm install -g n
+# use node's version 0.10.^
+sudo n 0.10
+# you can change after to lastest node's LTS by running `sudo n lts`
+# learn more with `n --help`
+```
 
 #### 1) Downloading & Installing
 
@@ -118,7 +138,7 @@ sudo apt-get install git build-essential redis-server libboost1.55-all-dev nodej
 Clone the repository and run `npm update` for all the dependencies to be installed:
 
 ```bash
-git clone https://github.com/forknote/cryptonote-universal-pool.git pool
+git clone https://github.com/charnacrypto/charnapool.git pool
 cd pool
 npm update
 ```
@@ -129,16 +149,16 @@ npm update
 Explanation for each field:
 ```javascript
 /* Used for storage in redis so multiple coins can share the same redis instance. */
-"coin": "dashcoin",
+"coin": "charnacoin",
 
 /* Used for front-end display */
-"symbol": "DSH",
+"symbol": "chrc",
 
 /* Minimum units in a single coin, see COIN constant in DAEMON_CODE/src/cryptonote_config.h */
-"coinUnits": 1000000000000,
+"coinUnits": 100000000,
 
 /* Coin network time to mine one block, see DIFFICULTY_TARGET constant in DAEMON_CODE/src/cryptonote_config.h */
-"coinDifficultyTarget": 120,
+"coinDifficultyTarget": 60,
 
 "logging": {
 
@@ -174,7 +194,7 @@ Explanation for each field:
     "clusterForks": "auto",
 
     /* Address where block rewards go, and miner payments come from. */
-    "poolAddress": "D6WLtrV1SBWV8HWQzQv8uuYuGy3uwZ8ah5iT5HovSqhTKMauquoTsKP8RBJzVqVesX87poYWQgkGWB4NWHJ6Ravv93v4BaE"
+    "poolAddress": "43Tob1j6gqcNGvM46xx5xiWqskj4DguW3jnHgGZAfD9KXLrcmxM3nQgT3sasEfaNqcWb5qRjsZzaUg2bdne54TaGBsra1CW"
 
     /* Poll RPC daemons for new blocks every this many milliseconds. */
     "blockRefreshInterval": 1000,
@@ -184,17 +204,17 @@ Explanation for each field:
 
     "ports": [
         {
-            "port": 3333, //Port for mining apps to connect to
+            "port": 2333, //Port for mining apps to connect to
             "difficulty": 100, //Initial difficulty miners are set to
             "desc": "Low end hardware" //Description of port
         },
         {
-            "port": 5555,
+            "port": 2555,
             "difficulty": 2000,
             "desc": "Mid range hardware"
         },
         {
-            "port": 7777,
+            "port": 2777,
             "difficulty": 10000,
             "desc": "High end hardware"
         }
@@ -213,7 +233,7 @@ Explanation for each field:
     },
 
     /* Set difficulty on miner client side by passing <address> param with .<difficulty> postfix
-       minerd -u D3z2DDWygoZU4NniCNa4oMjjKi45dC2KHUWUyD1RZ1pfgnRgcHdfLVQgh5gmRv4jwEjCX5LoLERAf5PbjLS43Rkd8vFUM1m.5000 */
+       minerd -u Cjo7trECi42f2Ph7BJtxc5e2fGtmpVkXLYyE5ynhnnf41p4n9oN3zn696muBZX6CBca8q1c46T5H8ZSKhLHtR2MGCrjLyoZ.5000 */
     "fixedDiff": {
         "enabled": true,
         "separator": ".", // character separator between <address> and <difficulty>
@@ -253,10 +273,10 @@ Explanation for each field:
     "interval": 600, //how often to run in seconds
     "maxAddresses": 50, //split up payments if sending to more than this many addresses
     "mixin": 3, //number of transactions yours is indistinguishable from
-    "transferFee": 5000000000, //fee to pay for each transaction
-    "minPayment": 100000000000, //miner balance required before sending payment
+    "transferFee": 30000000, //fee to pay for each transaction
+    "minPayment": 1000000000, //miner balance required before sending payment
     "maxTransactionAmount": 0, //split transactions by this amount(to prevent "too big transaction" error)
-    "denomination": 100000000000 //truncate to this precision and store remainder
+    "denomination": 1000000000 //truncate to this precision and store remainder
 },
 
 /* Module that monitors the submitted block maturities and manages rounds. Confirmed
@@ -288,13 +308,13 @@ Explanation for each field:
 /* Coin daemon connection details. */
 "daemon": {
     "host": "127.0.0.1",
-    "port": 29081
+    "port": 18091
 },
 
 /* Wallet daemon connection details. */
 "wallet": {
     "host": "127.0.0.1",
-    "port": 29082
+    "port": 18093
 },
 
 /* Redis connection into. */
@@ -375,6 +395,7 @@ Rezip and upload to your server or a file host. Then change the `easyminerDownlo
 point to your zip file.
 
 #### 4) Start the pool
+> These instructions, assuming your running Node.js version 0.10.^
 
 ```bash
 node init.js
@@ -426,7 +447,7 @@ var irc = "irc.freenode.net/#forknote";
 var email = "support@poolhost.com";
 
 /* Market stat display params from https://www.cryptonator.com/widget */
-var cryptonatorWidget = ["DSH-BTC", "DSH-USD", "DSH-EUR"];
+var cryptonatorWidget = ["XMR-BTC", "XMR-USD", "XMR-EUR"];
 
 /* Download link to cryptonote-easy-miner for Windows users. */
 var easyminerDownload = "https://github.com/zone117x/cryptonote-easy-miner/releases/";
