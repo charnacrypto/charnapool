@@ -1,11 +1,12 @@
 {
-    "name": "forknote-pool",
-    "version": "0.0.1",
+    "name": "cryptonote-charnapool",
+    "version": "0.1.0",
     "license": "GPL-2.0",
-    "authors": "Matthew Little",
+    "description": "High performance Node.js (with native C addons) mining pool for Cryptonote based coins, optimized for Charnacoin, with the support of Forknote software such as Bytecoin, Dashcoin, etc..",
+    "authors": "tnga <devtnga@gmail.com>",
     "repository": {
         "type": "git",
-        "url": "https://github.com/forknote/forknote-pool"
+        "url": "https://github.com/charnacrypto/charnapool"
     },
     "dependencies": {
         "bignum": "*",
