@@ -1,6 +1,6 @@
 {
     "name": "cryptonote-charnapool",
-    "version": "0.1.0",
+    "version": "1.2.1",
     "license": "GPL-2.0",
     "description": "High performance Node.js (with native C addons) mining pool for Cryptonote based coins, optimized for Charnacoin, with the support of Forknote software such as Bytecoin, Dashcoin, etc..",
     "authors": "tnga <devtnga@gmail.com>",
