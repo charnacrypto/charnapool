@@ -4,6 +4,8 @@ var api_blockexplorer = "http://daemonhost.com:18091";
 
 var poolHost = "poolhost.com";
 
+var coinHost = "http://coinhost.com";
+
 var irc = "irc.freenode.net/#poolhost";
 
 var email = "support@poolhost.com";

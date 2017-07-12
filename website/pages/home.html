@@ -76,8 +76,17 @@
         text-align: left;
     }
 
+    #currencyLogo {
+        height: 9em;
+    }
+
 </style>
 
+<center>
+    <img src="logo.png" alt="currency logo" id="currencyLogo" />
+    <br />
+    <span id="currencyLink"></span>
+</center>
 
 <div id="siteInfo">
     <!-- Description or information about this pool -->
@@ -310,6 +319,7 @@
 
 <script>
 
+    updateTextLinkable('currencyLink', '<a class="btn btn-info" href="'+ coinHost +'">Got to '+ lastStats.config.coin +' website</a>')
 
     currentPage = {
         destroy: function(){
