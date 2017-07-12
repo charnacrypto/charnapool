@@ -1,6 +1,6 @@
-var api = "http://localhost:8113";
+var api = "http://poolhost.com:8113";
 
-var api_blockexplorer = "http://localhost:1118";
+var api_blockexplorer = "http://daemonhost.com:18091";
 
 var poolHost = "poolhost.com";
 
@@ -8,7 +8,7 @@ var irc = "irc.freenode.net/#poolhost";
 
 var email = "support@poolhost.com";
 
-var cryptonatorWidget = ["XMR-BTC", "XMR-USD", "XMR-EUR"];
+var cryptonatorWidget = ["{symbol}-BTC", "{symbol}-USD", "{symbol}-EUR"];
 
 var easyminerDownload = "https://github.com/zone117x/cryptonote-easy-miner/releases/";
 
