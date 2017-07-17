@@ -1,6 +1,8 @@
 cryptonote-charna-pool
 ======================
 
+[![Join the chat at https://gitter.im/charnacrypto/charnapool](https://badges.gitter.im/charnacrypto/charnapool.svg)](https://gitter.im/charnacrypto/charnapool?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 High performance Node.js (with native C addons) mining pool for Cryptonote based coins, optimized for Charnacoin, with the support of Forknote software such as Bytecoin, Dashcoin, etc..
 
 Comes with lightweight example front-end script which uses the pool's AJAX API.
